@@ -2,742 +2,678 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Birthday Invitation</title>
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,700;6..96,900&family=Montserrat:wght@300;400;500;600;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@300;400;500;600;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================================================
-   RESET
-========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html,
-body {
-    min-height: 100%;
+body{
+    width:100%;
+    min-height:100%;
 }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(255,255,255,.95),
-            rgba(236,233,227,.9) 45%,
-            rgba(220,216,208,.85) 100%
-        );
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 50px 20px;
-
-    color: #111;
+body{
+    font-family:'Montserrat',sans-serif;
+    background:#ebe8e2;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:40px 15px;
+    color:#111;
 }
 
 
-/* =========================================================
-   CARD
-========================================================= */
+/* =====================================================
+   MAIN INVITATION
+===================================================== */
 
-.invitation {
-
-    position: relative;
-
-    width: 100%;
-    max-width: 620px;
-
-    min-height: 930px;
-
-    background: #f7f6f2;
-
-    overflow: hidden;
+.invitation{
+    position:relative;
+    width:100%;
+    max-width:620px;
+    background:#faf9f5;
+    overflow:hidden;
 
     box-shadow:
-        0 30px 70px rgba(35,25,15,.23),
-        0 5px 15px rgba(35,25,15,.10);
+        0 25px 60px rgba(0,0,0,.18),
+        0 5px 14px rgba(0,0,0,.08);
 }
 
 
-/* =========================================================
-   TOP PHOTO
-========================================================= */
+/* =====================================================
+   PHOTO SECTION
+===================================================== */
 
-.photo-section {
-
-    position: relative;
-
-    height: 505px;
-
-    overflow: hidden;
-
-    background: #ccc;
+.photo-section{
+    position:relative;
+    width:100%;
+    height:510px;
+    overflow:hidden;
+    background:#c9c9c9;
 }
 
 
-.photo-section img {
+.photo-section img{
+    position:absolute;
+    inset:0;
 
-    position: absolute;
+    width:100%;
+    height:100%;
 
-    width: 100%;
-    height: 100%;
+    object-fit:cover;
+    object-position:center 25%;
 
-    inset: 0;
-
-    object-fit: cover;
-
-    object-position: center 28%;
+    display:block;
 
     filter:
         grayscale(100%)
-        contrast(1.06)
+        contrast(1.04)
         brightness(.93);
-
 }
 
 
-/* Grey photographic overlay */
+/* gray photo treatment */
 
-.photo-section::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
+.photo-section::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:2;
 
     background:
         linear-gradient(
-            rgba(205,205,205,.12),
-            rgba(90,90,90,.10)
+            rgba(210,210,210,.08),
+            rgba(80,80,80,.08)
         );
 
-    pointer-events: none;
-
+    pointer-events:none;
 }
 
 
-/* =========================================================
-   HUGE 33
-========================================================= */
+/* =====================================================
+   HUGE TRANSPARENT 33
+===================================================== */
 
-.big-age {
+.big-age{
+    position:absolute;
 
-    position: absolute;
+    z-index:3;
 
-    z-index: 3;
+    top:-48px;
+    left:50%;
 
-    top: -55px;
-    left: 50%;
+    transform:translateX(-50%);
 
-    transform: translateX(-50%);
+    width:110%;
 
-    width: 100%;
+    text-align:center;
 
-    text-align: center;
+    font-family:'DM Serif Display',serif;
 
-    font-family: 'Bodoni Moda', serif;
+    font-size:390px;
+    line-height:1;
 
-    font-size: clamp(280px, 52vw, 410px);
+    font-weight:400;
 
-    line-height: 1;
+    letter-spacing:-42px;
 
-    font-weight: 400;
+    padding-right:42px;
 
-    letter-spacing: -45px;
+    color:rgba(245,245,245,.38);
 
-    padding-right: 45px;
-
-    color: rgba(235,235,235,.42);
-
-    user-select: none;
-
-    pointer-events: none;
+    pointer-events:none;
+    user-select:none;
 }
 
 
-/* =========================================================
+/* =====================================================
+   SHADOW BEHIND RIPPED PAPER
+===================================================== */
+
+.tear-shadow{
+    position:absolute;
+
+    z-index:4;
+
+    top:450px;
+    left:-3%;
+
+    width:106%;
+    height:90px;
+
+    filter:blur(10px);
+
+    opacity:.28;
+}
+
+
+/* =====================================================
    WHITE PAPER SECTION
-========================================================= */
+===================================================== */
 
-.paper-section {
+.paper-section{
+    position:relative;
 
-    position: relative;
+    z-index:6;
 
-    z-index: 10;
+    margin-top:-55px;
 
-    margin-top: -64px;
-
-    min-height: 500px;
+    min-height:590px;
 
     padding:
-        120px
-        62px
+        112px
+        60px
         55px;
 
     background:
         radial-gradient(
-            circle at 30% 40%,
-            rgba(255,255,255,.95),
-            transparent 45%
+            circle at 20% 30%,
+            rgba(255,255,255,.9),
+            transparent 38%
         ),
         linear-gradient(
-            100deg,
+            110deg,
             #fbfaf7,
-            #f4f3ef 50%,
+            #f7f6f2 48%,
             #fbfaf7
         );
-
 }
 
 
-/* =========================================================
-   REALISTIC TORN EDGE
-========================================================= */
+/* subtle paper texture */
 
-.paper-section {
+.paper-section::before{
+    content:"";
 
-    clip-path: polygon(
+    position:absolute;
+    inset:0;
 
-        0% 9%,
+    z-index:-2;
 
-        1.5% 7.6%,
-        3% 8.3%,
-        4.5% 7.2%,
-        6% 7.8%,
-        7.5% 6.6%,
-
-        9% 7.5%,
-        10.5% 6.8%,
-        12% 7.4%,
-        13.5% 6.1%,
-        15% 6.8%,
-
-        16.5% 5.9%,
-        18% 6.7%,
-        19.5% 5.3%,
-        21% 6.1%,
-        22.5% 5.2%,
-
-        24% 6.1%,
-        25.5% 5%,
-        27% 5.8%,
-        28.5% 4.9%,
-        30% 5.5%,
-
-        31.5% 4.3%,
-        33% 5.2%,
-        34.5% 4.4%,
-        36% 5.1%,
-        37.5% 4.2%,
-
-        39% 5.1%,
-        40.5% 4%,
-        42% 4.9%,
-        43.5% 4.2%,
-        45% 5%,
-
-        46.5% 4%,
-        48% 4.9%,
-        49.5% 3.9%,
-        51% 4.8%,
-        52.5% 3.8%,
-
-        54% 4.8%,
-        55.5% 4%,
-        57% 5%,
-        58.5% 4.1%,
-        60% 5.2%,
-
-        61.5% 4.2%,
-        63% 5.3%,
-        64.5% 4.5%,
-        66% 5.5%,
-        67.5% 4.7%,
-
-        69% 5.8%,
-        70.5% 4.9%,
-        72% 6%,
-        73.5% 5.1%,
-        75% 6.3%,
-
-        76.5% 5.2%,
-        78% 6.5%,
-        79.5% 5.8%,
-        81% 6.9%,
-        82.5% 6%,
-
-        84% 7.2%,
-        85.5% 6.4%,
-        87% 7.4%,
-        88.5% 6.7%,
-        90% 7.7%,
-
-        91.5% 7%,
-        93% 8%,
-        94.5% 7.1%,
-        96% 8.2%,
-        97.5% 7.5%,
-        100% 8.8%,
-
-        100% 100%,
-        0% 100%
-
-    );
-}
-
-
-/* paper fibres / texture */
-
-.paper-section::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    opacity: .30;
+    opacity:.50;
 
     background-image:
 
-        repeating-linear-gradient(
-            0deg,
-            rgba(75,65,55,.025) 0px,
-            rgba(75,65,55,.025) 1px,
-            transparent 1px,
-            transparent 4px
+        radial-gradient(
+            rgba(70,60,45,.04) .55px,
+            transparent .7px
         ),
 
-        repeating-linear-gradient(
-            92deg,
-            rgba(75,65,55,.015) 0px,
-            rgba(75,65,55,.015) 1px,
-            transparent 1px,
-            transparent 5px
+        radial-gradient(
+            rgba(255,255,255,.9) .6px,
+            transparent .8px
         );
 
+    background-size:
+        5px 5px,
+        8px 8px;
+
+    background-position:
+        0 0,
+        3px 3px;
 }
 
 
-/* subtle shadow under torn edge */
+/* =====================================================
+   REAL RIPPED EDGE
+===================================================== */
 
-.torn-shadow {
+.tear-svg{
+    position:absolute;
 
-    position: absolute;
+    top:-61px;
+    left:0;
 
-    z-index: 8;
+    width:100%;
+    height:90px;
 
-    left: 0;
+    z-index:4;
 
-    top: 438px;
+    overflow:visible;
+}
 
-    width: 100%;
-    height: 65px;
 
-    filter: blur(13px);
+.tear-svg path{
+    fill:#faf9f5;
+}
 
-    background: rgba(0,0,0,.18);
 
-    clip-path: polygon(
-        0 60%,
-        8% 47%,
-        17% 59%,
-        27% 43%,
-        39% 56%,
-        50% 39%,
-        62% 54%,
-        74% 41%,
-        85% 57%,
-        100% 45%,
-        100% 100%,
-        0 100%
+/* ripped fibres */
+
+.paper-fibres{
+    position:absolute;
+
+    top:-38px;
+    left:0;
+
+    width:100%;
+    height:42px;
+
+    z-index:5;
+
+    opacity:.22;
+
+    pointer-events:none;
+
+    background:
+        repeating-linear-gradient(
+            102deg,
+            transparent 0px,
+            transparent 5px,
+            rgba(70,65,55,.22) 6px,
+            transparent 7px,
+            transparent 12px
+        );
+}
+
+
+/* =====================================================
+   GOLD FLECKS
+===================================================== */
+
+.gold{
+    position:absolute;
+
+    z-index:8;
+
+    background:
+        linear-gradient(
+            130deg,
+            #8f6909,
+            #e2bc43,
+            #a2760d
+        );
+
+    clip-path:polygon(
+        0 35%,
+        40% 0,
+        100% 20%,
+        72% 100%,
+        14% 76%
     );
-
 }
 
 
-/* =========================================================
-   MAIN CONTENT
-========================================================= */
+.gold1{
+    width:8px;
+    height:4px;
+    right:31px;
+    top:63px;
+    transform:rotate(28deg);
+}
 
-.content {
+.gold2{
+    width:6px;
+    height:5px;
+    right:54px;
+    top:86px;
+    transform:rotate(-35deg);
+}
 
-    position: relative;
+.gold3{
+    width:4px;
+    height:7px;
+    right:24px;
+    top:111px;
+    transform:rotate(65deg);
+}
 
-    z-index: 5;
+.gold4{
+    width:7px;
+    height:4px;
+    left:33px;
+    bottom:116px;
+    transform:rotate(-25deg);
+}
 
-    text-align: center;
+.gold5{
+    width:5px;
+    height:8px;
+    left:16px;
+    bottom:84px;
+    transform:rotate(32deg);
+}
+
+.gold6{
+    width:7px;
+    height:4px;
+    left:59px;
+    bottom:54px;
+    transform:rotate(42deg);
 }
 
 
-/* top line */
+/* =====================================================
+   TEXT
+===================================================== */
 
-.intro {
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    letter-spacing: 2.7px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 32px;
+.content{
+    position:relative;
+    z-index:10;
+    text-align:center;
 }
 
 
-/* handwritten birthday line */
+/* PLEASE JOIN US */
 
-.birthday-name {
+.intro{
+    font-size:14px;
+    font-weight:700;
 
-    font-family: 'Mrs Saint Delafield', cursive;
+    letter-spacing:2.6px;
 
-    font-size: 63px;
+    text-transform:uppercase;
 
-    line-height: 1;
-
-    font-weight: 400;
-
-    margin-bottom: 35px;
-
-    transform: rotate(-1deg);
+    margin-bottom:28px;
 }
 
 
-/* =========================================================
+/* SCRIPT TEXT */
+
+.birthday-title{
+    font-family:'Mrs Saint Delafield',cursive;
+
+    font-size:68px;
+    font-weight:400;
+
+    line-height:.92;
+
+    margin-bottom:36px;
+
+    transform:rotate(-1deg);
+}
+
+
+/* =====================================================
    DATE ROW
-========================================================= */
+===================================================== */
 
-.date-row {
+.date-row{
+    width:100%;
+    max-width:465px;
 
-    display: grid;
+    margin:
+        0 auto
+        32px;
+
+    display:grid;
 
     grid-template-columns:
         1fr
         100px
         1fr;
 
-    align-items: center;
+    gap:18px;
 
-    gap: 18px;
-
-    max-width: 480px;
-
-    margin: 0 auto 30px;
+    align-items:center;
 }
 
 
-/* left/right date area */
+.date-side{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
-.date-side {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 8px;
+    gap:8px;
 }
 
 
-.date-line {
-
-    width: 100%;
-    height: 1.5px;
-
-    background: #111;
+.date-line{
+    width:100%;
+    height:1.5px;
+    background:#111;
 }
 
 
-.date-small {
+.date-small{
+    font-size:14px;
 
-    font-size: 14px;
+    font-weight:700;
 
-    line-height: 1;
+    letter-spacing:1.4px;
 
-    font-weight: 700;
+    line-height:1;
 
-    text-transform: uppercase;
-
-    letter-spacing: 1.5px;
+    text-transform:uppercase;
 }
 
 
-/* big day number */
+.day-number{
+    font-family:'DM Serif Display',serif;
 
-.day-number {
+    font-size:75px;
 
-    font-family: 'Bodoni Moda', serif;
+    line-height:.70;
 
-    font-size: 73px;
+    font-weight:400;
 
-    font-weight: 900;
-
-    line-height: .72;
+    margin-bottom:14px;
 }
 
 
-.month {
+.month{
+    font-size:14px;
 
-    margin-top: 10px;
+    font-weight:700;
 
-    font-size: 14px;
+    text-transform:uppercase;
 
-    font-weight: 700;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1.5px;
+    letter-spacing:1.2px;
 }
 
 
-/* =========================================================
-   LOCATION
-========================================================= */
+/* =====================================================
+   VENUE
+===================================================== */
 
-.location-title {
+.venue{
+    font-size:15px;
 
-    font-size: 15px;
+    font-weight:700;
 
-    font-weight: 700;
+    text-transform:uppercase;
 
-    letter-spacing: 2px;
+    letter-spacing:1.8px;
 
-    text-transform: uppercase;
-
-    margin-bottom: 10px;
+    margin-bottom:10px;
 }
 
 
-.address {
+.address{
+    font-size:14px;
 
-    font-size: 14px;
+    font-weight:400;
 
-    line-height: 1.55;
+    line-height:1.55;
 
-    letter-spacing: 1.5px;
+    letter-spacing:1.4px;
 
-    text-transform: uppercase;
-
-    font-weight: 400;
+    text-transform:uppercase;
 }
 
 
-/* =========================================================
+/* =====================================================
    RSVP
-========================================================= */
+===================================================== */
 
-.rsvp {
+.rsvp{
+    margin-top:37px;
 
-    margin-top: 38px;
+    font-size:12px;
 
-    font-size: 12px;
+    line-height:1.6;
 
-    letter-spacing: 1.5px;
+    letter-spacing:1.4px;
 
-    text-transform: uppercase;
-
-    line-height: 1.6;
+    text-transform:uppercase;
 }
 
 
-/* =========================================================
-   GOLD FLECKS
-========================================================= */
-
-.gold {
-
-    position: absolute;
-
-    z-index: 4;
-
-    width: 8px;
-    height: 4px;
-
-    background: linear-gradient(
-        120deg,
-        #a77811,
-        #e2bd51,
-        #9a6905
-    );
-
-    clip-path: polygon(
-        0 30%,
-        65% 0,
-        100% 65%,
-        35% 100%
-    );
-
-    transform: rotate(25deg);
-}
-
-
-.g1 {
-    top: 88px;
-    right: 28px;
-}
-
-.g2 {
-    top: 111px;
-    right: 55px;
-
-    width: 5px;
-    height: 8px;
-
-    transform: rotate(65deg);
-}
-
-.g3 {
-    top: 139px;
-    right: 18px;
-
-    width: 6px;
-    height: 3px;
-}
-
-.g4 {
-    bottom: 73px;
-    left: 28px;
-
-    width: 7px;
-    height: 4px;
-}
-
-.g5 {
-    bottom: 97px;
-    left: 14px;
-
-    width: 4px;
-    height: 8px;
-}
-
-.g6 {
-    bottom: 43px;
-    left: 53px;
-
-    width: 6px;
-    height: 4px;
-}
-
-
-/* =========================================================
+/* =====================================================
    MOBILE
-========================================================= */
+===================================================== */
 
-@media (max-width: 650px) {
+@media(max-width:650px){
 
-    body {
-        padding: 0;
-        background: #f7f6f2;
+    body{
+        padding:0;
+        background:#faf9f5;
     }
 
-    .invitation {
-        max-width: none;
-        width: 100%;
-        min-height: 100vh;
-        box-shadow: none;
+
+    .invitation{
+        width:100%;
+        max-width:none;
+
+        min-height:100vh;
+
+        box-shadow:none;
     }
 
-    .photo-section {
-        height: 54vh;
-        min-height: 390px;
-        max-height: 520px;
+
+    .photo-section{
+        height:58vh;
+        min-height:420px;
+        max-height:540px;
     }
 
-    .big-age {
-        top: -22px;
-        font-size: min(77vw, 350px);
-        letter-spacing: -9vw;
-        padding-right: 9vw;
+
+    .big-age{
+        top:-5px;
+
+        font-size:min(92vw,385px);
+
+        letter-spacing:-9vw;
+
+        padding-right:9vw;
     }
 
-    .paper-section {
-        margin-top: -60px;
+
+    .tear-shadow{
+        top:calc(58vh - 60px);
+    }
+
+
+    .paper-section{
+        margin-top:-55px;
 
         padding:
             110px
             35px
-            55px;
+            50px;
     }
 
-    .birthday-name {
-        font-size: clamp(48px, 14vw, 64px);
-    }
 
-    .date-row {
-        grid-template-columns:
-            1fr
-            80px
-            1fr;
-
-        gap: 13px;
-    }
-
-    .day-number {
-        font-size: 62px;
+    .birthday-title{
+        font-size:clamp(
+            49px,
+            14vw,
+            68px
+        );
     }
 
 }
 
 
-/* =========================================================
-   SMALL PHONE
-========================================================= */
+/* =====================================================
+   SMALL PHONES
+===================================================== */
 
-@media (max-width: 380px) {
+@media(max-width:410px){
 
-    .paper-section {
-        padding-left: 22px;
-        padding-right: 22px;
+    .photo-section{
+        height:430px;
+        min-height:430px;
     }
 
-    .intro {
-        font-size: 11px;
-        letter-spacing: 2px;
+
+    .big-age{
+        top:10px;
+
+        font-size:300px;
+
+        letter-spacing:-31px;
+
+        padding-right:31px;
     }
 
-    .birthday-name {
-        font-size: 48px;
+
+    .tear-shadow{
+        top:375px;
     }
 
-    .date-small {
-        font-size: 11px;
+
+    .paper-section{
+        padding:
+            102px
+            24px
+            45px;
     }
 
-    .location-title {
-        font-size: 13px;
+
+    .intro{
+        font-size:11px;
+        letter-spacing:2px;
     }
 
-    .address {
-        font-size: 12px;
+
+    .birthday-title{
+        font-size:50px;
+        white-space:normal;
     }
 
-    .rsvp {
-        font-size: 10px;
+
+    .date-row{
+        grid-template-columns:
+            1fr
+            75px
+            1fr;
+
+        gap:11px;
+    }
+
+
+    .date-small{
+        font-size:11px;
+    }
+
+
+    .day-number{
+        font-size:61px;
+    }
+
+
+    .month{
+        font-size:11px;
+    }
+
+
+    .venue{
+        font-size:13px;
+    }
+
+
+    .address{
+        font-size:12px;
+    }
+
+
+    .rsvp{
+        font-size:10px;
     }
 
 }
@@ -752,10 +688,12 @@ body {
 <div class="invitation">
 
 
-    <!-- ==========================================
+    <!-- =================================================
          PHOTO
-         CHANGE ONLY src=""
-    =========================================== -->
+
+         CHANGE ONLY THIS:
+         src="YOUR-PHOTO.jpg"
+    ================================================== -->
 
     <div class="photo-section">
 
@@ -764,7 +702,8 @@ body {
             alt="Birthday photo"
         >
 
-        <!-- LARGE TRANSPARENT AGE -->
+
+        <!-- HUGE 33 -->
 
         <div class="big-age">
             33
@@ -773,44 +712,134 @@ body {
     </div>
 
 
-    <!-- SHADOW BELOW THE TORN PAPER -->
 
-    <div class="torn-shadow"></div>
+    <!-- =================================================
+         SHADOW UNDER TORN PAPER
+    ================================================== -->
+
+    <svg
+        class="tear-shadow"
+        viewBox="0 0 1000 120"
+        preserveAspectRatio="none"
+    >
+
+        <path
+            fill="#222"
+            d="
+            M0 64
+
+            C20 54, 28 47, 43 53
+            C58 60, 67 43, 81 49
+            C98 57, 107 39, 123 46
+            C138 53, 151 35, 168 43
+            C183 49, 193 32, 211 39
+            C226 46, 238 28, 256 35
+            C273 41, 284 24, 302 32
+            C320 39, 331 20, 350 29
+            C369 37, 378 18, 398 27
+            C416 34, 428 16, 448 25
+            C466 33, 478 14, 498 24
+            C517 32, 528 15, 548 25
+            C567 34, 579 17, 598 27
+            C617 36, 630 20, 649 30
+            C668 40, 681 23, 700 34
+            C719 45, 731 28, 750 39
+            C770 50, 782 34, 800 44
+            C820 55, 832 39, 851 50
+            C870 60, 884 46, 902 56
+            C921 67, 936 52, 953 61
+            C970 69, 985 58, 1000 68
+
+            L1000 120
+            L0 120
+            Z
+            "
+        />
+
+    </svg>
 
 
 
-    <!-- ==========================================
-         WHITE TORN PAPER
-    =========================================== -->
+    <!-- =================================================
+         WHITE PAPER
+    ================================================== -->
 
     <section class="paper-section">
 
 
-        <!-- decorative gold pieces -->
+        <!-- RIPPED TOP EDGE -->
 
-        <span class="gold g1"></span>
-        <span class="gold g2"></span>
-        <span class="gold g3"></span>
+        <svg
+            class="tear-svg"
+            viewBox="0 0 1000 120"
+            preserveAspectRatio="none"
+        >
 
-        <span class="gold g4"></span>
-        <span class="gold g5"></span>
-        <span class="gold g6"></span>
+            <path
+                d="
+                M0 66
+
+                C16 56, 27 45, 41 52
+                C56 59, 66 42, 80 48
+                C94 56, 105 38, 121 45
+                C136 52, 148 34, 165 42
+                C181 49, 192 31, 209 38
+                C225 45, 237 27, 254 34
+                C272 42, 283 23, 301 31
+                C319 39, 331 20, 349 28
+                C367 36, 378 17, 397 26
+                C415 34, 427 15, 446 24
+                C465 32, 477 14, 497 23
+                C516 32, 528 15, 547 24
+                C566 33, 578 16, 598 26
+                C617 35, 629 19, 648 29
+                C667 39, 680 22, 699 33
+                C718 44, 730 27, 749 38
+                C769 49, 781 33, 800 44
+                C819 55, 831 39, 850 50
+                C870 61, 883 45, 902 56
+                C921 67, 935 51, 953 61
+                C970 69, 985 57, 1000 67
+
+                L1000 120
+                L0 120
+                Z
+                "
+            />
+
+        </svg>
 
 
+        <div class="paper-fibres"></div>
+
+
+
+        <!-- GOLD DETAILS -->
+
+        <span class="gold gold1"></span>
+        <span class="gold gold2"></span>
+        <span class="gold gold3"></span>
+
+        <span class="gold gold4"></span>
+        <span class="gold gold5"></span>
+        <span class="gold gold6"></span>
+
+
+
+        <!-- =================================================
+             INVITATION TEXT
+        ================================================== -->
 
         <div class="content">
 
-
-            <!-- CHANGE TEXT -->
 
             <div class="intro">
                 PLEASE JOIN US TO CELEBRATE
             </div>
 
 
-            <!-- CHANGE NAME / AGE -->
 
-            <div class="birthday-name">
+            <div class="birthday-title">
                 Michael's 33rd birthday
             </div>
 
@@ -821,7 +850,7 @@ body {
             <div class="date-row">
 
 
-                <!-- LEFT -->
+                <!-- LEFT SIDE -->
 
                 <div class="date-side">
 
@@ -853,7 +882,7 @@ body {
 
 
 
-                <!-- RIGHT -->
+                <!-- RIGHT SIDE -->
 
                 <div class="date-side">
 
@@ -874,17 +903,14 @@ body {
 
             <!-- LOCATION -->
 
-            <div class="location-title">
+            <div class="venue">
                 AT THE BIRTHDAY HALL
             </div>
 
 
             <div class="address">
-
                 BIRTHDAY LANE 123,<br>
-
                 BALLOON TOWN 12345
-
             </div>
 
 
@@ -892,10 +918,7 @@ body {
             <!-- RSVP -->
 
             <div class="rsvp">
-
-                PLEASE RSVP BY THE 10TH OF AUGUST
-                @ 123-345-5678
-
+                PLEASE RSVP BY THE 10TH OF AUGUST @ 123-345-5678
             </div>
 
 
