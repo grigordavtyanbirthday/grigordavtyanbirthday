@@ -2,77 +2,229 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-    <title>70th Birthday Invitation</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <style>
+<title>70th Birthday Invitation</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
 
-        html,
-        body {
-            width: 100%;
-            min-height: 100%;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            background: #eee9e1;
-        }
+    html,
+    body {
+        width: 100%;
+        min-height: 100%;
+    }
 
-        .page {
-            width: 100%;
-            min-height: 100vh;
+    body {
+        background: #eee9e1;
+    }
 
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
+    .page {
+        width: 100%;
+        min-height: 100vh;
 
-            background: #eee9e1;
-        }
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+
+        background: #eee9e1;
+    }
+
+    .invitation {
+        display: block;
+
+        width: 100%;
+        max-width: 768px;
+
+        height: auto;
+
+        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    /* MUSIC BUTTON */
+
+    .music-button {
+        position: fixed;
+
+        bottom: 25px;
+        right: 25px;
+
+        width: 52px;
+        height: 52px;
+
+        border-radius: 50%;
+        border: 1px solid rgba(90, 65, 45, 0.25);
+
+        background: rgba(245, 237, 225, 0.92);
+
+        color: #5a4637;
+
+        font-size: 21px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+
+        backdrop-filter: blur(8px);
+
+        z-index: 100;
+
+        transition: transform 0.3s ease;
+    }
+
+    .music-button:hover {
+        transform: scale(1.08);
+    }
+
+    @media (max-width: 768px) {
 
         .invitation {
-            display: block;
-
-            width: 100%;
-            max-width: 768px;
-
-            height: auto;
-
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            max-width: none;
+            box-shadow: none;
         }
 
-        @media (max-width: 768px) {
+        .music-button {
+            width: 46px;
+            height: 46px;
 
-            .invitation {
-                max-width: none;
-                box-shadow: none;
-            }
+            bottom: 18px;
+            right: 18px;
 
+            font-size: 18px;
         }
 
-    </style>
+    }
+
+</style>
+
 </head>
 
 
 <body>
 
-    <div class="page">
 
-        <img
-            class="invitation"
-            src="./invitation-70.png.png"
-            alt="70th Birthday Invitation"
-        >
+<div class="page">
 
-    </div>
+    <img
+        class="invitation"
+        src="./invitation-70.png"
+        alt="70th Birthday Invitation"
+    >
+
+</div>
+
+
+<!-- MUSIC -->
+
+<audio id="bgMusic" loop preload="auto">
+
+    <source src="./music.mp3" type="audio/mpeg">
+
+</audio>
+
+
+<!-- MUSIC ON/OFF BUTTON -->
+
+<button
+    class="music-button"
+    id="musicButton"
+    aria-label="Play music"
+>
+    ♪
+</button>
+
+
+<script>
+
+const music = document.getElementById("bgMusic");
+const musicButton = document.getElementById("musicButton");
+
+let musicStarted = false;
+
+
+/* START MUSIC ON FIRST CLICK/TAP */
+
+function startMusic() {
+
+    if (!musicStarted) {
+
+        music.volume = 0.7;
+
+        music.play()
+            .then(() => {
+
+                musicStarted = true;
+
+                musicButton.innerHTML = "❚❚";
+
+            })
+            .catch(() => {
+                // Browser is waiting for user interaction
+            });
+
+    }
+
+}
+
+
+/* CLICKING ANYWHERE STARTS MUSIC */
+
+document.addEventListener(
+    "click",
+    startMusic,
+    { once: true }
+);
+
+
+/* MUSIC BUTTON */
+
+musicButton.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    if (music.paused) {
+
+        music.play();
+
+        musicStarted = true;
+
+        musicButton.innerHTML = "❚❚";
+
+        musicButton.setAttribute(
+            "aria-label",
+            "Pause music"
+        );
+
+    } else {
+
+        music.pause();
+
+        musicButton.innerHTML = "♪";
+
+        musicButton.setAttribute(
+            "aria-label",
+            "Play music"
+        );
+
+    }
+
+});
+
+</script>
+
 
 </body>
 
