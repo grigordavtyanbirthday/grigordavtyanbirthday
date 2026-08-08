@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,63 +10,64 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,700;6..96,900&family=Montserrat:wght@300;400;500;600;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================================================
-   RESET
-========================================================= */
-
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html,
 body {
+    width: 100%;
     min-height: 100%;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
+    background: #f3f1ed;
     color: #111;
-    overflow-x: hidden;
 }
 
 
-/* =========================================================
-   FULL BACKGROUND — TABLETOP
-========================================================= */
+/* ==========================================================
+   COMPLETE BACKGROUND SCENE
+========================================================== */
 
 .scene {
+
     position: relative;
 
-    min-height: 100vh;
     width: 100%;
+    min-height: 100vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    padding: 70px 25px;
+    padding: 65px 20px;
 
     overflow: hidden;
 
     background:
+
         radial-gradient(
-            circle at 25% 15%,
-            rgba(255,255,255,.95),
-            rgba(248,247,244,.92) 45%,
-            rgba(239,237,232,.96) 100%
+            circle at 48% 25%,
+            rgba(255,255,255,.98),
+            rgba(250,249,246,.98) 46%,
+            rgba(239,237,232,.98) 100%
         );
+
 }
 
 
-/* very subtle tabletop texture */
+/* very soft paper/table texture */
 
 .scene::before {
+
     content: "";
 
     position: absolute;
@@ -73,136 +75,174 @@ body {
 
     pointer-events: none;
 
-    opacity: .26;
+    opacity: .3;
 
     background-image:
+
         radial-gradient(
-            rgba(80,70,60,.05) .5px,
-            transparent .8px
+            rgba(80,70,60,.07) .4px,
+            transparent .7px
         );
 
-    background-size: 7px 7px;
+    background-size: 6px 6px;
+
 }
 
 
-/* =========================================================
+
+/* ==========================================================
    KRAFT ENVELOPE
-========================================================= */
+========================================================== */
 
 .envelope {
+
     position: absolute;
 
-    width: min(730px, 78vw);
-    height: 900px;
+    z-index: 1;
+
+    width: 625px;
+    height: 930px;
 
     left: 50%;
     top: 50%;
 
     transform:
-        translate(-44%, -48%)
-        rotate(-5deg);
+        translate(-46%, -48%)
+        rotate(-4deg);
+
+    border-radius: 2px;
 
     background:
-        radial-gradient(
-            circle at 30% 20%,
-            rgba(255,255,255,.08),
-            transparent 30%
-        ),
+
         repeating-linear-gradient(
-            18deg,
-            rgba(80,55,30,.04) 0px,
-            rgba(80,55,30,.04) 1px,
+            8deg,
+            rgba(80,55,30,.025) 0px,
+            rgba(80,55,30,.025) 1px,
             transparent 1px,
-            transparent 6px
+            transparent 5px
         ),
-        #b88d61;
+
+        repeating-linear-gradient(
+            93deg,
+            rgba(255,255,255,.025) 0px,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px,
+            transparent 7px
+        ),
+
+        #b58a5e;
 
     box-shadow:
-        0 18px 45px rgba(70,50,30,.22);
 
-    z-index: 1;
+        0 25px 55px rgba(71,48,30,.25);
+
 }
 
 
-/* envelope flap */
+/* top flap */
 
 .envelope::before {
+
     content: "";
 
     position: absolute;
+
+    width: 100%;
+    height: 50%;
 
     top: 0;
     left: 0;
 
-    width: 100%;
-    height: 48%;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 60%
+    );
 
     background:
         linear-gradient(
-            145deg,
-            transparent 0 49.5%,
-            rgba(104,73,43,.17) 50% 50.8%,
-            transparent 51%
-        ),
-        linear-gradient(
-            215deg,
-            transparent 0 49.5%,
-            rgba(104,73,43,.13) 50% 50.8%,
-            transparent 51%
+            170deg,
+            rgba(255,255,255,.06),
+            rgba(95,62,34,.10)
         );
 
-    pointer-events: none;
 }
 
 
-/* envelope lower fold */
+/* lower envelope folds */
 
 .envelope::after {
+
     content: "";
 
     position: absolute;
 
-    left: 0;
-    bottom: 0;
-
-    width: 100%;
-    height: 52%;
+    inset: 0;
 
     background:
+
         linear-gradient(
             35deg,
-            transparent 0 49.6%,
-            rgba(95,65,38,.12) 50% 50.8%,
-            transparent 51%
+            transparent 49.5%,
+            rgba(79,51,29,.12) 50%,
+            transparent 50.8%
         ),
+
         linear-gradient(
             -35deg,
-            transparent 0 49.6%,
-            rgba(95,65,38,.11) 50% 50.8%,
-            transparent 51%
+            transparent 49.5%,
+            rgba(79,51,29,.12) 50%,
+            transparent 50.8%
         );
+
 }
 
 
-/* =========================================================
-   BOTANICAL DECORATIONS
-========================================================= */
 
-.branch {
+/* ==========================================================
+   PLANT DECORATIONS
+========================================================== */
+
+.plant {
+
     position: absolute;
 
     z-index: 2;
 
-    width: 220px;
-    height: 410px;
+    width: 180px;
+    height: 400px;
 
     pointer-events: none;
+
 }
 
 
-/* stem */
+.plant-left {
 
-.branch::before {
+    left: calc(50% - 440px);
+    bottom: -100px;
+
+    transform: rotate(-18deg);
+
+}
+
+
+.plant-right {
+
+    right: calc(50% - 450px);
+    top: -130px;
+
+    transform:
+        rotate(160deg)
+        scale(.75);
+
+}
+
+
+/* main stem */
+
+.plant::before {
+
     content: "";
 
     position: absolute;
@@ -212,169 +252,111 @@ body {
 
     left: 50%;
 
-    border-radius: 50%;
+    background:
 
-    background: #6f7658;
+        linear-gradient(
+            #667054,
+            #82876d
+        );
 
-    transform: rotate(8deg);
+    border-radius: 100%;
+
+    transform: rotate(5deg);
+
 }
 
 
-/* leaves created with background */
+/* leaves */
 
-.branch .leaf {
+.leaf {
+
     position: absolute;
 
-    width: 28px;
-    height: 72px;
+    width: 24px;
+    height: 63px;
 
     border-radius:
-        90% 10% 90% 10%;
+        100% 0 100% 0;
 
     background:
+
         linear-gradient(
             135deg,
-            #556149,
-            #8b9274
+            #526044,
+            #889077
         );
 
-    transform-origin: bottom center;
+    opacity: .88;
 
-    opacity: .9;
 }
 
 
-.branch .leaf:nth-child(1) {
-    top: 18px;
-    left: 78px;
-    transform: rotate(-42deg);
-}
-
-.branch .leaf:nth-child(2) {
-    top: 68px;
-    left: 108px;
-    transform: rotate(32deg);
-}
-
-.branch .leaf:nth-child(3) {
-    top: 116px;
-    left: 71px;
-    transform: rotate(-47deg);
-}
-
-.branch .leaf:nth-child(4) {
-    top: 166px;
-    left: 113px;
-    transform: rotate(38deg);
-}
-
-.branch .leaf:nth-child(5) {
-    top: 214px;
-    left: 73px;
-    transform: rotate(-41deg);
-}
-
-.branch .leaf:nth-child(6) {
-    top: 265px;
-    left: 108px;
-    transform: rotate(36deg);
-}
-
-.branch .leaf:nth-child(7) {
-    top: 312px;
-    left: 76px;
-    transform: rotate(-39deg);
-}
+.l1 { top:35px; left:61px; transform:rotate(-40deg); }
+.l2 { top:75px; left:100px; transform:rotate(38deg); }
+.l3 { top:120px; left:59px; transform:rotate(-43deg); }
+.l4 { top:165px; left:101px; transform:rotate(37deg); }
+.l5 { top:210px; left:61px; transform:rotate(-45deg); }
+.l6 { top:255px; left:99px; transform:rotate(38deg); }
+.l7 { top:300px; left:64px; transform:rotate(-40deg); }
 
 
-/* pinkish flower tips */
+.flower {
 
-.branch .flower {
     position: absolute;
 
-    width: 17px;
-    height: 48px;
-
-    border-radius:
-        60% 60% 45% 45%;
+    width: 16px;
+    height: 45px;
 
     background:
+
         linear-gradient(
-            #87626d,
-            #b9828f
+            #745865,
+            #aa7885
         );
 
-    opacity: .85;
+    border-radius:
+        70% 70% 45% 45%;
+
 }
 
 
-.branch .flower:nth-of-type(8) {
-    top: 4px;
-    left: 105px;
-    transform: rotate(25deg);
-}
-
-.branch .flower:nth-of-type(9) {
-    top: 85px;
-    left: 62px;
-    transform: rotate(-30deg);
-}
-
-.branch .flower:nth-of-type(10) {
-    top: 190px;
-    left: 119px;
-    transform: rotate(34deg);
-}
+.fl1 { top:20px; left:100px; transform:rotate(22deg); }
+.fl2 { top:125px; left:48px; transform:rotate(-30deg); }
+.fl3 { top:225px; left:110px; transform:rotate(34deg); }
 
 
-/* left branch */
 
-.branch-left {
-    left: max(-50px, calc(50% - 520px));
-    bottom: -70px;
-
-    transform: rotate(-18deg);
-}
-
-
-/* right upper branch */
-
-.branch-right {
-    right: max(-70px, calc(50% - 550px));
-    top: -90px;
-
-    transform:
-        rotate(158deg)
-        scale(.83);
-}
-
-
-/* =========================================================
-   MAIN CARD
-========================================================= */
+/* ==========================================================
+   INVITATION CARD
+========================================================== */
 
 .card {
+
     position: relative;
 
     z-index: 5;
 
-    width: min(610px, 92vw);
+    width: 545px;
 
-    background: #fbfaf6;
-
-    box-shadow:
-        0 28px 70px rgba(38,28,20,.25),
-        0 5px 18px rgba(38,28,20,.12);
+    background: #fbfaf7;
 
     overflow: hidden;
+
+    box-shadow:
+
+        0 24px 60px rgba(48,35,26,.20),
+        0 5px 16px rgba(48,35,26,.10);
+
 }
 
 
-/* =========================================================
+
+/* ==========================================================
    PHOTO
-========================================================= */
+========================================================== */
 
 .photo {
+
     position: relative;
 
     width: 100%;
@@ -382,695 +364,781 @@ body {
 
     overflow: hidden;
 
-    background: #c8c8c8;
+    background: #c7c7c7;
+
 }
 
 
 .photo img {
-    position: absolute;
-
-    inset: 0;
 
     width: 100%;
     height: 100%;
 
+    display: block;
+
     object-fit: cover;
 
-    /* change this if needed */
-    object-position: center 25%;
+    /*
+       ADJUST THIS ONLY IF YOUR FACE
+       NEEDS TO MOVE UP/DOWN
+    */
+
+    object-position: center 24%;
 
     filter:
+
         grayscale(100%)
         contrast(1.08)
         brightness(.92);
 
-    display: block;
 }
 
 
-/* gray photographic wash */
+/* cinematic grey wash */
 
 .photo::after {
+
     content: "";
 
     position: absolute;
+
     inset: 0;
 
     z-index: 2;
 
+    pointer-events: none;
+
     background:
+
         linear-gradient(
             to bottom,
-            rgba(215,215,215,.10),
-            rgba(75,75,75,.06)
+            rgba(220,220,220,.06),
+            rgba(45,45,45,.08)
         );
 
-    pointer-events: none;
 }
 
 
-/* =========================================================
+
+/* ==========================================================
    HUGE TRANSPARENT 33
-========================================================= */
+========================================================== */
 
 .age {
+
     position: absolute;
 
     z-index: 3;
 
-    top: -84px;
+    top: -35px;
+
     left: 50%;
 
     transform: translateX(-50%);
 
-    width: 115%;
+    width: 116%;
 
     text-align: center;
 
-    font-family: 'Libre Bodoni', serif;
-
-    font-size: 415px;
+    font-family: "Bodoni Moda", serif;
 
     font-weight: 400;
 
-    line-height: 1;
+    font-size: 385px;
 
-    letter-spacing: -54px;
+    line-height: .95;
 
-    padding-right: 54px;
+    letter-spacing: -58px;
 
-    color: rgba(242,242,242,.38);
+    padding-right: 58px;
 
-    pointer-events: none;
+    color: rgba(235,235,235,.35);
 
     user-select: none;
+    pointer-events: none;
+
 }
 
 
-/* =========================================================
-   PAPER BODY
-========================================================= */
+
+/* ==========================================================
+   PAPER AREA
+========================================================== */
 
 .paper {
+
     position: relative;
 
     z-index: 8;
 
-    margin-top: -65px;
+    margin-top: -66px;
 
-    min-height: 610px;
+    min-height: 590px;
 
     padding:
-        128px
-        60px
-        56px;
 
-    background:
-        radial-gradient(
-            circle at 20% 25%,
-            rgba(255,255,255,.92),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 70%,
-            rgba(225,219,205,.12),
-            transparent 38%
-        ),
-        #fbfaf6;
+        123px
+        49px
+        48px;
+
+    background: #faf9f6;
+
 }
 
 
-/* actual paper grain */
+/* paper grain */
 
 .paper::before {
+
     content: "";
 
     position: absolute;
+
     inset: 0;
 
     pointer-events: none;
 
-    opacity: .4;
+    opacity: .38;
 
     background-image:
 
         repeating-linear-gradient(
-            7deg,
-            rgba(100,80,60,.022) 0px,
-            rgba(100,80,60,.022) 1px,
+            6deg,
+            rgba(90,75,60,.026) 0px,
+            rgba(90,75,60,.026) 1px,
             transparent 1px,
             transparent 5px
         ),
 
         repeating-linear-gradient(
-            96deg,
-            rgba(100,80,60,.017) 0px,
-            rgba(100,80,60,.017) 1px,
+            92deg,
+            rgba(90,75,60,.018) 0px,
+            rgba(90,75,60,.018) 1px,
             transparent 1px,
-            transparent 7px
+            transparent 8px
+        ),
+
+        radial-gradient(
+            rgba(60,50,40,.035) .5px,
+            transparent .7px
         );
+
+    background-size:
+        auto,
+        auto,
+        5px 5px;
+
 }
 
 
-/* =========================================================
-   TORN PAPER — irregular edge
-========================================================= */
 
-.tear {
+/* ==========================================================
+   REAL TORN EDGE
+
+   SVG + TURBULENCE = irregular paper tear
+========================================================== */
+
+.torn-edge {
+
     position: absolute;
 
+    z-index: 10;
+
+    width: 104%;
+
+    height: 108px;
+
     top: -76px;
-    left: -1%;
-
-    width: 102%;
-    height: 110px;
-
-    z-index: 8;
+    left: -2%;
 
     overflow: visible;
 
     filter:
         drop-shadow(
-            0 -4px 3px rgba(0,0,0,.08)
+            0 -4px 4px rgba(0,0,0,.11)
         );
+
 }
 
 
-.tear path {
-    fill: #fbfaf6;
+.torn-edge rect {
+
+    fill: #faf9f6;
+
 }
 
 
-/* fuzzy ripped fibres */
 
-.fibres {
+/* fuzzy paper hairs */
+
+.paper-hairs {
+
     position: absolute;
 
-    top: -55px;
-    left: 0;
+    z-index: 11;
 
-    width: 100%;
+    top: -51px;
+    left: -1%;
+
+    width: 102%;
     height: 55px;
 
-    z-index: 9;
-
-    opacity: .27;
+    opacity: .22;
 
     pointer-events: none;
 
     background:
+
         repeating-linear-gradient(
-            101deg,
+            98deg,
+
             transparent 0px,
-            transparent 5px,
-            rgba(110,105,95,.24) 6px,
             transparent 7px,
-            transparent 13px
+
+            rgba(105,100,90,.35) 8px,
+
+            transparent 9px,
+            transparent 14px
         );
 
     mask-image:
+
         linear-gradient(
             to bottom,
-            transparent,
-            black 40%,
+
+            transparent 0%,
+            black 35%,
+            black 55%,
             transparent 100%
         );
+
 }
 
 
-/* extra edge highlights */
 
-.fibre-line {
-    position: absolute;
-
-    z-index: 9;
-
-    top: -33px;
-
-    width: 40px;
-    height: 1px;
-
-    background: rgba(125,120,108,.35);
-
-    transform-origin: left center;
-}
-
-
-.f1 {
-    left: 8%;
-    transform: rotate(-76deg);
-}
-
-.f2 {
-    left: 19%;
-    transform: rotate(-82deg);
-}
-
-.f3 {
-    left: 35%;
-    transform: rotate(-78deg);
-}
-
-.f4 {
-    left: 64%;
-    transform: rotate(-82deg);
-}
-
-.f5 {
-    left: 82%;
-    transform: rotate(-76deg);
-}
-
-
-/* =========================================================
-   GOLD FLECKS
-========================================================= */
+/* ==========================================================
+   RANDOM GOLD LEAF
+========================================================== */
 
 .gold {
+
     position: absolute;
 
-    z-index: 12;
+    z-index: 15;
 
     background:
+
         linear-gradient(
-            130deg,
-            #8e6608,
-            #e8c85c,
-            #b2800e
+            135deg,
+            #8f6504,
+            #eccb54,
+            #a67a0d
         );
 
     clip-path:
+
         polygon(
-            0 27%,
-            42% 0,
-            100% 28%,
-            71% 100%,
-            17% 77%
+            0 35%,
+            38% 0,
+            100% 25%,
+            70% 100%,
+            17% 76%
         );
+
 }
 
 
 .g1 {
-    width: 8px;
+    width: 7px;
     height: 4px;
-    top: 67px;
-    right: 30px;
-    transform: rotate(22deg);
+    right: 24px;
+    top: 65px;
+    transform: rotate(30deg);
 }
 
 .g2 {
     width: 6px;
     height: 5px;
-    top: 95px;
-    right: 51px;
-    transform: rotate(-28deg);
+    right: 44px;
+    top: 90px;
+    transform: rotate(-23deg);
 }
 
 .g3 {
     width: 4px;
     height: 7px;
-    top: 123px;
     right: 18px;
+    top: 118px;
     transform: rotate(58deg);
 }
 
 .g4 {
     width: 7px;
     height: 4px;
-    left: 28px;
-    bottom: 117px;
-    transform: rotate(-18deg);
+    left: 27px;
+    bottom: 108px;
+    transform: rotate(-19deg);
 }
 
 .g5 {
     width: 5px;
     height: 8px;
     left: 14px;
-    bottom: 86px;
-    transform: rotate(31deg);
+    bottom: 82px;
+    transform: rotate(32deg);
 }
 
 .g6 {
-    width: 8px;
+    width: 7px;
     height: 4px;
     left: 52px;
-    bottom: 57px;
-    transform: rotate(41deg);
-}
-
-.g7 {
-    width: 5px;
-    height: 4px;
-    right: 14px;
-    top: 158px;
-    transform: rotate(-32deg);
+    bottom: 54px;
+    transform: rotate(42deg);
 }
 
 
-/* =========================================================
+
+/* ==========================================================
    TEXT
-========================================================= */
+========================================================== */
 
 .content {
+
     position: relative;
 
-    z-index: 15;
+    z-index: 20;
 
     text-align: center;
+
 }
 
 
-/* top heading */
-
 .intro {
-    margin-bottom: 28px;
 
-    font-size: 14px;
+    margin-bottom: 27px;
+
+    font-size: 13px;
 
     font-weight: 700;
 
-    letter-spacing: 2.7px;
+    letter-spacing: 2.4px;
 
     text-transform: uppercase;
+
 }
 
 
-/* handwritten line */
+
+/* handwritten title */
 
 .birthday-title {
-    margin-bottom: 38px;
 
-    font-family: 'Mrs Saint Delafield', cursive;
+    margin-bottom: 33px;
 
-    font-size: 67px;
+    font-family:
+        "Mrs Saint Delafield",
+        cursive;
+
+    font-size: 59px;
 
     font-weight: 400;
 
     line-height: .95;
 
     transform: rotate(-1deg);
+
 }
 
 
-/* =========================================================
+
+/* ==========================================================
    DATE
-========================================================= */
+========================================================== */
 
 .date-row {
+
+    width: 100%;
+
+    max-width: 420px;
+
+    margin:
+
+        0 auto
+        31px;
+
     display: grid;
 
     grid-template-columns:
+
         1fr
-        100px
+        86px
         1fr;
 
-    gap: 18px;
+    gap: 15px;
 
     align-items: center;
 
-    width: 100%;
-    max-width: 455px;
-
-    margin:
-        0 auto
-        35px;
 }
 
 
 .date-side {
+
     display: flex;
 
     flex-direction: column;
 
     align-items: center;
 
-    gap: 9px;
+    gap: 8px;
+
 }
 
 
 .date-line {
+
     width: 100%;
-    height: 1.5px;
+
+    height: 1.4px;
 
     background: #111;
+
 }
 
 
 .date-small {
-    font-size: 14px;
+
+    font-size: 12px;
 
     line-height: 1;
 
     font-weight: 700;
 
-    letter-spacing: 1.35px;
+    letter-spacing: 1.2px;
 
     text-transform: uppercase;
+
 }
 
 
 .day {
+
+    font-family: "Bodoni Moda", serif;
+
+    font-weight: 900;
+
+    font-size: 68px;
+
+    line-height: .68;
+
     margin-bottom: 13px;
 
-    font-family: 'Libre Bodoni', serif;
-
-    font-size: 74px;
-
-    font-weight: 700;
-
-    line-height: .70;
 }
 
 
 .month {
-    font-size: 13px;
+
+    font-size: 12px;
 
     font-weight: 700;
 
-    letter-spacing: 1.3px;
-
     text-transform: uppercase;
+
+    letter-spacing: 1.1px;
+
 }
 
 
-/* =========================================================
-   VENUE
-========================================================= */
+
+/* ==========================================================
+   LOCATION
+========================================================== */
 
 .venue {
-    margin-bottom: 10px;
 
-    font-size: 15px;
+    margin-bottom: 8px;
+
+    font-size: 14px;
 
     font-weight: 700;
 
-    letter-spacing: 2px;
+    letter-spacing: 1.7px;
 
     text-transform: uppercase;
+
 }
 
 
 .address {
-    font-size: 14px;
+
+    font-size: 13px;
+
+    font-weight: 400;
+
+    line-height: 1.55;
+
+    letter-spacing: 1.25px;
+
+    text-transform: uppercase;
+
+}
+
+
+
+/* ==========================================================
+   RSVP
+========================================================== */
+
+.rsvp {
+
+    margin-top: 34px;
+
+    font-size: 11px;
 
     font-weight: 400;
 
     line-height: 1.6;
 
-    letter-spacing: 1.45px;
+    letter-spacing: 1.25px;
 
     text-transform: uppercase;
+
 }
 
 
-/* =========================================================
-   RSVP
-========================================================= */
 
-.rsvp {
-    margin-top: 38px;
+/* ==========================================================
+   TABLETS
+========================================================== */
 
-    font-size: 12px;
-
-    line-height: 1.65;
-
-    letter-spacing: 1.35px;
-
-    text-transform: uppercase;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
+@media (max-width: 760px) {
 
     .scene {
+
         padding:
             45px
-            16px
-            70px;
+            15px
+            60px;
+
     }
 
+
+    .card {
+
+        width: min(
+            545px,
+            89vw
+        );
+
+    }
+
+
     .envelope {
-        width: 93vw;
+
+        width: min(
+            620px,
+            92vw
+        );
+
+    }
+
+
+    .plant-left {
+
+        left: -70px;
+
+    }
+
+
+    .plant-right {
+
+        right: -80px;
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   PHONES
+========================================================== */
+
+@media (max-width: 520px) {
+
+
+    .scene {
+
+        min-height: 100vh;
+
+        padding:
+            30px
+            12px
+            45px;
+
+    }
+
+
+    .card {
+
+        width: 91vw;
+
+    }
+
+
+    .envelope {
+
+        width: 95vw;
+
         height: 88%;
 
         transform:
             translate(-46%, -48%)
-            rotate(-4deg);
+            rotate(-3.5deg);
+
     }
 
-    .card {
-        width: min(92vw, 610px);
-    }
 
     .photo {
-        height: 70vw;
-        min-height: 390px;
-        max-height: 500px;
+
+        height: 72vw;
+
+        min-height: 360px;
+
+        max-height: 445px;
+
     }
 
-    .age {
-        top: -25px;
 
-        font-size: min(82vw, 390px);
+    .age {
+
+        top: -5px;
+
+        font-size: min(
+            78vw,
+            350px
+        );
 
         letter-spacing: -10vw;
 
         padding-right: 10vw;
+
     }
 
+
     .paper {
+
         margin-top: -61px;
 
         padding:
-            118px
-            37px
-            55px;
+
+            111px
+            27px
+            43px;
+
     }
 
-    .birthday-title {
-        font-size: clamp(
-            50px,
-            13vw,
-            66px
-        );
+
+    .torn-edge {
+
+        top: -72px;
+
     }
 
-    .branch-left {
-        left: -95px;
-    }
-
-    .branch-right {
-        right: -115px;
-    }
-}
-
-
-/* =========================================================
-   SMALL PHONES
-========================================================= */
-
-@media (max-width: 430px) {
-
-    .scene {
-        padding:
-            25px
-            12px
-            45px;
-    }
-
-    .envelope {
-        width: 96vw;
-    }
-
-    .card {
-        width: 94vw;
-    }
-
-    .photo {
-        height: 410px;
-        min-height: 410px;
-    }
-
-    .age {
-        top: 3px;
-
-        font-size: 295px;
-
-        letter-spacing: -35px;
-
-        padding-right: 35px;
-    }
-
-    .paper {
-        padding:
-            109px
-            25px
-            45px;
-    }
 
     .intro {
-        font-size: 11px;
 
-        letter-spacing: 1.9px;
+        font-size: 10px;
 
-        margin-bottom: 24px;
+        letter-spacing: 1.8px;
+
     }
+
 
     .birthday-title {
-        font-size: 49px;
 
-        line-height: .95;
+        font-size: clamp(
+            43px,
+            12vw,
+            56px
+        );
 
-        margin-bottom: 33px;
+        margin-bottom: 29px;
+
     }
+
 
     .date-row {
+
         grid-template-columns:
+
             1fr
-            73px
+            67px
             1fr;
 
-        gap: 11px;
+        gap: 10px;
+
     }
+
 
     .date-small {
-        font-size: 10px;
 
-        letter-spacing: 1px;
-    }
-
-    .day {
-        font-size: 59px;
-    }
-
-    .month {
-        font-size: 10px;
-    }
-
-    .venue {
-        font-size: 12px;
-
-        letter-spacing: 1.4px;
-    }
-
-    .address {
-        font-size: 11px;
-
-        letter-spacing: 1.1px;
-    }
-
-    .rsvp {
         font-size: 9px;
 
-        letter-spacing: 1px;
     }
+
+
+    .day {
+
+        font-size: 54px;
+
+    }
+
+
+    .month {
+
+        font-size: 9px;
+
+    }
+
+
+    .venue {
+
+        font-size: 11px;
+
+    }
+
+
+    .address {
+
+        font-size: 10px;
+
+    }
+
+
+    .rsvp {
+
+        font-size: 8px;
+
+    }
+
+
+    .plant-left {
+
+        left: -110px;
+
+    }
+
+
+    .plant-right {
+
+        right: -120px;
+
+    }
+
 }
 
 </style>
+
 </head>
 
 
@@ -1080,297 +1148,341 @@ body {
 <div class="scene">
 
 
-    <!-- =====================================================
-         BACKGROUND ENVELOPE
-    ====================================================== -->
 
-    <div class="envelope"></div>
+<!-- =========================================================
+     KRAFT ENVELOPE
+========================================================= -->
+
+<div class="envelope"></div>
 
 
 
-    <!-- =====================================================
-         DECORATIVE BRANCH — LEFT
-    ====================================================== -->
+<!-- =========================================================
+     LEFT PLANT
+========================================================= -->
 
-    <div class="branch branch-left">
+<div class="plant plant-left">
 
-        <span class="leaf"></span>
-        <span class="leaf"></span>
-        <span class="leaf"></span>
-        <span class="leaf"></span>
-        <span class="leaf"></span>
-        <span class="leaf"></span>
-        <span class="leaf"></span>
+    <span class="leaf l1"></span>
+    <span class="leaf l2"></span>
+    <span class="leaf l3"></span>
+    <span class="leaf l4"></span>
+    <span class="leaf l5"></span>
+    <span class="leaf l6"></span>
+    <span class="leaf l7"></span>
 
-        <span class="flower"></span>
-        <span class="flower"></span>
-        <span class="flower"></span>
+    <span class="flower fl1"></span>
+    <span class="flower fl2"></span>
+    <span class="flower fl3"></span>
+
+</div>
+
+
+
+<!-- =========================================================
+     RIGHT PLANT
+========================================================= -->
+
+<div class="plant plant-right">
+
+    <span class="leaf l1"></span>
+    <span class="leaf l2"></span>
+    <span class="leaf l3"></span>
+    <span class="leaf l4"></span>
+    <span class="leaf l5"></span>
+    <span class="leaf l6"></span>
+    <span class="leaf l7"></span>
+
+    <span class="flower fl1"></span>
+    <span class="flower fl2"></span>
+    <span class="flower fl3"></span>
+
+</div>
+
+
+
+<!-- =========================================================
+     INVITATION
+========================================================= -->
+
+<main class="card">
+
+
+
+<!-- =========================================================
+     PHOTO
+
+     THIS IS WHERE YOU PUT YOUR PHOTO
+========================================================= -->
+
+<section class="photo">
+
+
+    <img
+        src="YOUR-PHOTO.jpg"
+        alt="Birthday photo"
+    >
+
+
+    <!-- HUGE TRANSPARENT 33 -->
+
+    <div class="age">
+        33
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     WHITE PAPER
+========================================================= -->
+
+<section class="paper">
+
+
+
+<!-- =========================================================
+     REAL DISTORTED TORN EDGE
+========================================================= -->
+
+<svg
+    class="torn-edge"
+    viewBox="0 0 1000 150"
+    preserveAspectRatio="none"
+>
+
+
+    <defs>
+
+
+        <!-- random natural paper distortion -->
+
+        <filter
+            id="paperTear"
+            x="-10%"
+            y="-30%"
+            width="120%"
+            height="180%"
+        >
+
+
+            <feTurbulence
+                type="fractalNoise"
+                baseFrequency=".015 .09"
+                numOctaves="4"
+                seed="19"
+                result="noise"
+            />
+
+
+            <feDisplacementMap
+                in="SourceGraphic"
+                in2="noise"
+                scale="24"
+                xChannelSelector="R"
+                yChannelSelector="G"
+            />
+
+
+        </filter>
+
+
+    </defs>
+
+
+
+    <!--
+        The rectangle is deliberately pushed down.
+        SVG distortion destroys the perfectly smooth edge.
+    -->
+
+    <rect
+
+        x="-20"
+        y="46"
+
+        width="1040"
+        height="130"
+
+        filter="url(#paperTear)"
+
+    />
+
+
+</svg>
+
+
+
+<!-- fuzzy paper fibers -->
+
+<div class="paper-hairs"></div>
+
+
+
+<!-- =========================================================
+     GOLD FLECKS
+========================================================= -->
+
+<span class="gold g1"></span>
+<span class="gold g2"></span>
+<span class="gold g3"></span>
+
+<span class="gold g4"></span>
+<span class="gold g5"></span>
+<span class="gold g6"></span>
+
+
+
+<!-- =========================================================
+     TEXT
+========================================================= -->
+
+<div class="content">
+
+
+    <div class="intro">
+
+        PLEASE JOIN US TO CELEBRATE
+
+    </div>
+
+
+
+    <div class="birthday-title">
+
+        Michael's 33rd birthday
 
     </div>
 
 
 
     <!-- =====================================================
-         DECORATIVE BRANCH — RIGHT
+         DATE
     ====================================================== -->
 
-    <div class="branch branch-right">
+    <div class="date-row">
 
-        <span class="leaf"></span>
-        <span class="leaf"></span>
-        <span class="leaf"></span>
-        <span class="leaf"></span>
-        <span class="leaf"></span>
-        <span class="leaf"></span>
-        <span class="leaf"></span>
 
-        <span class="flower"></span>
-        <span class="flower"></span>
-        <span class="flower"></span>
+
+        <!-- LEFT -->
+
+        <div class="date-side">
+
+
+            <div class="date-line"></div>
+
+
+            <div class="date-small">
+
+                SATURDAY
+
+            </div>
+
+
+            <div class="date-line"></div>
+
+
+        </div>
+
+
+
+        <!-- CENTER -->
+
+        <div>
+
+
+            <div class="day">
+
+                21
+
+            </div>
+
+
+            <div class="month">
+
+                SEPTEMBER
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- RIGHT -->
+
+        <div class="date-side">
+
+
+            <div class="date-line"></div>
+
+
+            <div class="date-small">
+
+                8:30 PM
+
+            </div>
+
+
+            <div class="date-line"></div>
+
+
+        </div>
+
+
 
     </div>
 
 
 
     <!-- =====================================================
-         INVITATION CARD
+         VENUE
     ====================================================== -->
 
-    <main class="card">
+    <div class="venue">
 
+        AT THE BIRTHDAY HALL
 
-        <!-- =================================================
-             YOUR PHOTO
+    </div>
 
-             CHANGE ONLY src="YOUR-PHOTO.jpg"
-        ================================================== -->
 
-        <section class="photo">
 
+    <div class="address">
 
-            <img
-                src="YOUR-PHOTO.jpg"
-                alt="Birthday photo"
-            >
+        BIRTHDAY LANE 123,<br>
 
+        BALLOON TOWN 12345
 
-            <!-- LARGE TRANSPARENT NUMBER -->
+    </div>
 
-            <div class="age">
-                33
-            </div>
 
 
-        </section>
+    <!-- =====================================================
+         RSVP
+    ====================================================== -->
 
+    <div class="rsvp">
 
+        PLEASE RSVP BY THE 10TH OF AUGUST
+        @ 123-345-5678
 
-        <!-- =================================================
-             TORN WHITE PAPER
-        ================================================== -->
+    </div>
 
-        <section class="paper">
 
+</div>
 
-            <!-- REAL IRREGULAR TEAR -->
 
-            <svg
-                class="tear"
-                viewBox="0 0 1000 130"
-                preserveAspectRatio="none"
-            >
+</section>
 
-                <path d="
 
-                M0 78
-
-                C13 67 21 72 33 63
-                C42 57 49 70 60 62
-                C70 54 76 64 88 57
-                C98 51 105 61 116 54
-
-                C127 47 135 57 145 50
-                C157 42 163 54 175 47
-                C186 39 193 52 205 44
-                C215 37 223 48 235 41
-
-                C246 35 253 46 265 39
-                C276 33 284 43 296 36
-                C307 30 315 41 326 34
-                C337 28 345 39 357 32
-
-                C369 26 377 37 388 30
-                C399 24 407 36 419 29
-                C430 23 439 35 451 28
-                C462 22 471 34 482 27
-
-                C494 21 503 34 515 27
-                C526 21 535 34 547 27
-                C559 22 568 35 580 28
-                C591 23 600 36 612 30
-
-                C623 25 632 38 644 32
-                C655 27 665 40 677 34
-                C689 29 698 42 711 37
-                C722 32 732 45 744 40
-
-                C756 35 766 48 778 43
-                C790 38 800 52 812 47
-                C824 42 835 56 847 51
-                C859 46 870 60 882 55
-
-                C894 50 905 64 918 59
-                C929 54 941 69 953 64
-                C966 59 978 73 989 68
-                C994 66 997 71 1000 72
-
-                L1000 130
-                L0 130
-
-                Z
-
-                " />
-
-            </svg>
-
-
-
-            <!-- torn fibres -->
-
-            <div class="fibres"></div>
-
-            <span class="fibre-line f1"></span>
-            <span class="fibre-line f2"></span>
-            <span class="fibre-line f3"></span>
-            <span class="fibre-line f4"></span>
-            <span class="fibre-line f5"></span>
-
-
-
-            <!-- GOLD FLAKES -->
-
-            <span class="gold g1"></span>
-            <span class="gold g2"></span>
-            <span class="gold g3"></span>
-            <span class="gold g4"></span>
-            <span class="gold g5"></span>
-            <span class="gold g6"></span>
-            <span class="gold g7"></span>
-
-
-
-            <!-- =================================================
-                 TEXT
-            ================================================== -->
-
-            <div class="content">
-
-
-                <div class="intro">
-                    PLEASE JOIN US TO CELEBRATE
-                </div>
-
-
-                <div class="birthday-title">
-                    Michael's 33rd birthday
-                </div>
-
-
-
-                <!-- DATE -->
-
-                <div class="date-row">
-
-
-                    <!-- LEFT -->
-
-                    <div class="date-side">
-
-                        <div class="date-line"></div>
-
-                        <div class="date-small">
-                            SATURDAY
-                        </div>
-
-                        <div class="date-line"></div>
-
-                    </div>
-
-
-
-                    <!-- CENTER -->
-
-                    <div>
-
-                        <div class="day">
-                            21
-                        </div>
-
-                        <div class="month">
-                            SEPTEMBER
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- RIGHT -->
-
-                    <div class="date-side">
-
-                        <div class="date-line"></div>
-
-                        <div class="date-small">
-                            8:30 PM
-                        </div>
-
-                        <div class="date-line"></div>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <!-- LOCATION -->
-
-                <div class="venue">
-                    AT THE BIRTHDAY HALL
-                </div>
-
-
-                <div class="address">
-
-                    BIRTHDAY LANE 123,<br>
-
-                    BALLOON TOWN 12345
-
-                </div>
-
-
-
-                <!-- RSVP -->
-
-                <div class="rsvp">
-
-                    PLEASE RSVP BY THE 10TH OF AUGUST
-                    @ 123-345-5678
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-    </main>
+</main>
 
 
 </div>
 
 
 </body>
+
 </html>
