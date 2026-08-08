@@ -1,2 +1,79 @@
-index.html
-invitation-70.png
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>70th Birthday Invitation</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            background: #eee9e1;
+        }
+
+        .page {
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+
+            background: #eee9e1;
+        }
+
+        .invitation {
+            display: block;
+
+            width: 100%;
+            max-width: 768px;
+
+            height: auto;
+
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        @media (max-width: 768px) {
+
+            .invitation {
+                max-width: none;
+                box-shadow: none;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="page">
+
+        <img
+            class="invitation"
+            src="./invitation-70.png"
+            alt="70th Birthday Invitation"
+        >
+
+    </div>
+
+</body>
+
+</html>
