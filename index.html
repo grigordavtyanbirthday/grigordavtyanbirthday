@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -12,139 +11,142 @@
 
 <style>
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #eee9e1;
+}
+
+/* Invitation container */
+
+.page {
+    position: relative;
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    line-height: 0;
+}
+
+/* Invitation image */
+
+.invitation {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Music button */
+
+.music-button {
+    position: absolute;
+
+    right: 22px;
+    bottom: 22px;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(245, 237, 225, 0.92);
+
+    color: #5a4637;
+
+    font-size: 21px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+
+    z-index: 10;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
 
     html,
     body {
         width: 100%;
-        min-height: 100%;
-    }
-
-    body {
+        height: auto;
+        min-height: 0;
+        overflow-x: hidden;
         background: #eee9e1;
     }
 
     .page {
         width: 100%;
-        min-height: 100vh;
-
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-
-        background: #eee9e1;
+        height: auto;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
     }
 
     .invitation {
         display: block;
-
         width: 100%;
-        max-width: 768px;
-
         height: auto;
-
-        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        margin: 0;
+        padding: 0;
     }
-
-    /* MUSIC BUTTON */
 
     .music-button {
-        position: fixed;
+        width: 46px;
+        height: 46px;
 
-        bottom: 25px;
-        right: 25px;
+        right: 16px;
+        bottom: 16px;
 
-        width: 52px;
-        height: 52px;
-
-        border-radius: 50%;
-        border: 1px solid rgba(90, 65, 45, 0.25);
-
-        background: rgba(245, 237, 225, 0.92);
-
-        color: #5a4637;
-
-        font-size: 21px;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        cursor: pointer;
-
-        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-
-        backdrop-filter: blur(8px);
-
-        z-index: 100;
-
-        transition: transform 0.3s ease;
+        font-size: 19px;
     }
-
-    .music-button:hover {
-        transform: scale(1.08);
-    }
-
-    @media (max-width: 768px) {
-
-        .invitation {
-            max-width: none;
-            box-shadow: none;
-        }
-
-        .music-button {
-            width: 46px;
-            height: 46px;
-
-            bottom: 18px;
-            right: 18px;
-
-            font-size: 18px;
-        }
-
-    }
+}
 
 </style>
-
 </head>
 
 
 <body>
 
-
 <div class="page">
 
     <img
         class="invitation"
-        src="./invitation-70.png.png"
+        src="./invitation-70.png"
         alt="70th Birthday Invitation"
     >
+
+    <!-- MUSIC BUTTON -->
+    <button
+        class="music-button"
+        id="musicButton"
+        aria-label="Play music"
+    >
+        ♪
+    </button>
 
 </div>
 
 
-<!-- MUSIC -->
-
 <audio id="bgMusic" loop preload="auto">
-
     <source src="./music.mp3" type="audio/mpeg">
-
 </audio>
-
-
-<!-- MUSIC ON/OFF BUTTON -->
-
-<button
-    class="music-button"
-    id="musicButton"
-    aria-label="Play music"
->
-    ♪
-</button>
 
 
 <script>
@@ -155,41 +157,27 @@ const musicButton = document.getElementById("musicButton");
 let musicStarted = false;
 
 
-/* START MUSIC ON FIRST CLICK/TAP */
+/* First tap anywhere starts music */
 
-function startMusic() {
+document.addEventListener("click", function startMusic() {
 
     if (!musicStarted) {
 
         music.volume = 0.7;
 
-        music.play()
-            .then(() => {
+        music.play().then(() => {
 
-                musicStarted = true;
+            musicStarted = true;
+            musicButton.innerHTML = "❚❚";
 
-                musicButton.innerHTML = "❚❚";
-
-            })
-            .catch(() => {
-                // Browser is waiting for user interaction
-            });
+        }).catch(() => {});
 
     }
 
-}
+}, { once: true });
 
 
-/* CLICKING ANYWHERE STARTS MUSIC */
-
-document.addEventListener(
-    "click",
-    startMusic,
-    { once: true }
-);
-
-
-/* MUSIC BUTTON */
+/* Music button */
 
 musicButton.addEventListener("click", function(event) {
 
@@ -225,7 +213,5 @@ musicButton.addEventListener("click", function(event) {
 
 </script>
 
-
 </body>
-
 </html>
